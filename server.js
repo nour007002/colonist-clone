@@ -1,4 +1,3 @@
-// server.js
 const path = require("path");
 const express = require("express");
 const http = require("http");
@@ -8,8 +7,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// Serve static files
+// Serve static files from /public
 app.use(express.static(path.join(__dirname, "public")));
+
 
 // --- Simple in-memory game data (lost when you restart server) ---
 const rooms = {}; 
@@ -155,3 +155,4 @@ const PORT = 3000;
 server.listen(PORT, () => {
   console.log("Server listening on http://localhost:" + PORT);
 });
+
