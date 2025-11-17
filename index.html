@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Colonist-like Multiplayer Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>Colonist-like Multiplayer Prototype</h1>
+
+    <div id="auth">
+      <label>
+        Name:
+        <input type="text" id="playerName" placeholder="Your name" />
+      </label>
+    </div>
+
+    <div id="lobby">
+      <div class="card">
+        <h2>Create Room</h2>
+        <label>
+          Map:
+          <select id="createMap">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
+        <button id="createRoomBtn">Create</button>
+      </div>
+
+      <div class="card">
+        <h2>Join Room</h2>
+        <label>
+          Room Code:
+          <input type="text" id="joinCode" placeholder="ABCD" maxlength="4" />
+        </label>
+        <button id="joinRoomBtn">Join</button>
+        <div id="joinError" class="error"></div>
+      </div>
+    </div>
+
+    <div id="game" class="hidden">
+      <div class="top-bar">
+        <div>
+          Room: <span id="roomCodeDisplay"></span> |
+          Map: <span id="mapIdDisplay"></span>
+        </div>
+      </div>
+      <div class="game-layout">
+        <div id="board"></div>
+        <div id="sidebar">
+          <h2>Players</h2>
+          <ul id="playerList"></ul>
+          <p class="info">Click tiles to claim/unclaim and earn/lose points.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
